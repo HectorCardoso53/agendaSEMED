@@ -1,0 +1,265 @@
+/* ======================================================
+   🎨 PALETA OFICIAL – SEMED
+====================================================== */
+:root {
+  --azul: #0a74b8;
+  --azul-escuro: #085a96;
+  --azul-claro: #2f79be;
+
+  --amarelo: #f4eb06;
+  --amarelo-escuro: #d0b411;
+
+  --verde: #1b8a4a;
+
+  --cinza-bg: #f6f8fa;
+  --cinza-card: #ffffff;
+  --cinza-borda: #dce1e6;
+
+  --texto: #2b2b2b;
+  --texto-sec: #6c757d;
+}
+
+/* ======================================================
+   🌐 BASE
+====================================================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--cinza-bg);
+  color: var(--texto);
+}
+
+/* ======================================================
+   🟦 HEADER
+====================================================== */
+.header-semed {
+  position: relative;
+  padding: 14px 16px 18px;
+  text-align: center;
+  color: #fff;
+
+  background: linear-gradient(
+    135deg,
+    var(--azul),
+    var(--azul-escuro)
+  );
+
+  border-bottom: 3px solid var(--amarelo);
+}
+
+/* logo */
+.header-logo {
+  width: 110px;
+  height: auto;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+
+/* título */
+.header-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* botões topo */
+.header-action {
+  position: absolute;
+  top: 12px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+.header-action.left { left: 12px; }
+.header-action.right { right: 12px; }
+
+/* ======================================================
+   🔘 BOTÕES
+====================================================== */
+.btn-semed,
+.btn-pink {
+  background: linear-gradient(
+    135deg,
+    var(--azul),
+    var(--azul-escuro)
+  );
+  color: #fff;
+  border: none;
+}
+
+.btn-semed:hover,
+.btn-pink:hover {
+  opacity: 0.92;
+  color: #fff;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--azul),
+    var(--azul-escuro)
+  );
+  border: none;
+}
+
+.btn-success {
+  background: linear-gradient(
+    135deg,
+    var(--verde),
+    #136c39
+  );
+  border: none;
+}
+
+/* ======================================================
+   📦 CONTAINER
+====================================================== */
+.container {
+  max-width: 900px;
+  margin: 24px auto 0;
+  padding-bottom: 32px;
+}
+
+/* ======================================================
+   🧾 CARDS
+====================================================== */
+.card {
+  background-color: var(--cinza-card);
+  border-radius: 14px;
+  border: 1px solid var(--cinza-borda);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Próximo compromisso */
+.card-alerta {
+  padding: 14px 16px;
+  border-left: 4px solid var(--azul);
+  margin-bottom: 20px;
+}
+
+.card-alerta h4 {
+  margin-bottom: 4px;
+  color: var(--azul-claro);
+}
+
+.card-alerta p {
+  margin: 0;
+  color: var(--texto-sec);
+}
+
+/* ======================================================
+   📝 TÍTULOS DE SEÇÃO
+====================================================== */
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--azul-claro);
+}
+
+/* ======================================================
+   ✏️ FORMULÁRIOS
+====================================================== */
+label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+input,
+select {
+  border-radius: 10px;
+  border: 1px solid var(--cinza-borda);
+  padding: 10px 12px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(10,116,184,0.15);
+}
+
+/* ======================================================
+   📋 LISTA VAZIA
+====================================================== */
+.list-group {
+  margin-bottom: 12px;
+}
+
+.list-group-item {
+  border-radius: 10px;
+  border: 1px dashed var(--cinza-borda);
+  color: var(--texto-sec);
+}
+
+/* ======================================================
+   📌 CARD DO PLANO
+====================================================== */
+.card-plano {
+  position: absolute;
+  top: 58px;
+  left: 12px;
+  width: 300px;
+  display: none;
+  z-index: 1000;
+
+  background: linear-gradient(
+    135deg,
+    var(--azul),
+    var(--azul-escuro)
+  );
+  color: #fff;
+
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+}
+
+/* botão fechar plano */
+.card-plano .btn-secondary {
+  background-color: var(--amarelo);
+  color: #000;
+  border: none;
+}
+
+.card-plano .btn-secondary:hover {
+  background-color: var(--amarelo-escuro);
+}
+
+/* ======================================================
+   📎 FOOTER
+====================================================== */
+.footer-semed {
+  margin-top: 40px;
+  background-color: var(--azul-escuro);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.8rem;
+}
+
+/* ======================================================
+   📱 RESPONSIVO
+====================================================== */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.1rem;
+  }
+
+  .header-logo {
+    width: 90px;
+  }
+
+  .card-plano {
+    width: 90%;
+    left: 5%;
+  }
+}

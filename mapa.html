@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de Demandas - SEMED</title>
+
+  <link rel="icon" href="images/logo_semed.png" type="image/png">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <!-- Bootstrap + Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- CSS do mapa -->
+  <link rel="stylesheet" href="css/mapas.css">
+</head>
+
+<body>
+
+  <header class="mapa-header">
+    <img src="images/logo_semed.png" alt="Logo SEMED">
+    <h2>Mapa de Demandas</h2>
+  </header>
+
+  <div id="mapa"></div>
+
+  <a href="home.html" class="btn-voltar" title="Voltar">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+
+  <footer class="mapa-footer">
+    &copy; 2026 Secretaria Municipal de Educação
+  </footer>
+
+  <button id="btnGrafico" class="btn-grafico" title="Resumo">
+    <i class="bi bi-bar-chart"></i>
+  </button>
+
+  <div id="cardGrafico" class="card-grafico">
+    <h5 class="titulo-card">Resumo das Demandas</h5>
+    <canvas id="graficoVisitas"></canvas>
+  </div>
+
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Seu JS -->
+  <script type="module" src="js/maps.js"></script>
+
+</body>
+</html>

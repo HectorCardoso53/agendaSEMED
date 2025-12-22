@@ -1,0 +1,1 @@
+export const ADMIN_UID = "RRfDT9IYg2S8JhXWyFVNxi1jVb02"; // substitua pelo seu UID

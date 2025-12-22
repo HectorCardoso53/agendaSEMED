@@ -1,0 +1,192 @@
+/* ================================
+   🎨 PALETA DE CORES – SEMED
+================================ */
+:root {
+  --amarelo: #F4EB06;
+  --amarelo-escuro: #D0B411;
+
+  --azul: #0091D5;
+  --azul-escuro: #0461A3;
+
+  --vermelho: #EA1012;
+
+  --preto: #060606;
+  --cinza-claro: #f4f6f8;
+  --cinza-borda: #dce1e6;
+  --cinza-texto: #495057;
+}
+
+/* ================================
+   🌐 BODY
+================================ */
+body {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    var(--cinza-claro) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ================================
+   📦 CONTAINER
+================================ */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================================
+   🧾 CARD LOGIN
+================================ */
+.card-login {
+  background-color: #ffffff;
+  padding: 2.2rem 2rem;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+  border-top: 6px solid var(--amarelo);
+  animation: fadeIn 0.4s ease;
+}
+
+/* ================================
+   🖼️ LOGO
+================================ */
+.card-login img {
+  display: block;
+  margin: 0 auto 0.75rem;
+  max-width: 120px;
+}
+
+/* ================================
+   📝 TÍTULO
+================================ */
+.card-login h2 {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: var(--azul-escuro);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* ================================
+   ✏️ LABELS
+================================ */
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cinza-texto);
+  margin-bottom: 0.3rem;
+}
+
+/* ================================
+   🧠 INPUTS
+================================ */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid var(--cinza-borda);
+  padding: 0.65rem 0.75rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 145, 213, 0.15);
+  outline: none;
+}
+
+/* ================================
+   🔒 BOTÃO OLHO (SENHA)
+================================ */
+.btn-toggle-senha {
+  background-color: var(--amarelo);
+  color: var(--preto);
+  border: none;
+  border-radius: 0 8px 8px 0;
+  padding: 0 14px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-toggle-senha:hover {
+  background-color: var(--amarelo-escuro);
+}
+
+/* ================================
+   🔘 BOTÃO LOGIN
+================================ */
+.btn-login {
+  background: linear-gradient(
+    135deg,
+    var(--azul),
+    var(--azul-escuro)
+  );
+  color: #ffffff;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-login:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 145, 213, 0.3);
+}
+
+/* ================================
+   🔗 LINKS
+================================ */
+a {
+  color: var(--azul);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   ⏳ LOADER
+================================ */
+.loader {
+  border: 3px solid #eaeaea;
+  border-top: 3px solid var(--azul);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.d-none {
+  display: none;
+}
+
+/* ================================
+   ✨ ANIMAÇÃO
+================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
