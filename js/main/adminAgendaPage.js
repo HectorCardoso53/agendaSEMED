@@ -2,7 +2,6 @@
 import { auth } from "../firebase.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import { ADMIN_UID } from "../../config/admin.js";
-import { carregarPlanoUsuario } from "../plano/plano.js";
 import { inicializarAgenda } from "../agenda/agendaUI.js";
 
 onAuthStateChanged(auth, async (user) => {
@@ -18,7 +17,6 @@ onAuthStateChanged(auth, async (user) => {
   }
 
   // plano + bloqueio
-  await carregarPlanoUsuario(user.uid);
 
   // agenda
   inicializarAgenda();

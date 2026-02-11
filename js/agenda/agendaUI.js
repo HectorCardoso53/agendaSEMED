@@ -55,20 +55,6 @@ function inicializarAgenda() {
     mostrarProximoCompromisso();
   }
 
-  // finalização vindo do mapa
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("finalizarCompromisso") === "true") {
-    setFinalizando(true);
-
-    setTimeout(async () => {
-      await finalizarAdicaoCompromisso();
-      setFinalizando(false);
-
-      const url = new URL(window.location.href);
-      url.searchParams.delete("finalizarCompromisso");
-      history.replaceState(null, "", url.pathname + url.search + url.hash);
-    }, 500);
-  }
 }
 
 export { inicializarAgenda };

@@ -1,23 +1,27 @@
-/* ======================================================
-   🎨 PALETA OFICIAL – SEMED
-====================================================== */
 :root {
-  --azul: #0a74b8;
-  --azul-escuro: #085a96;
-  --azul-claro: #2f79be;
 
-  --amarelo: #f4eb06;
-  --amarelo-escuro: #d0b411;
+  /* 🔵 Azul da logo */
+  --azul: #657a96;
+  --azul-escuro: #4e627c;
+  --azul-claro: #7f92ab;
+
+  /* 🟠 Laranja da logo */
+  --amarelo: #ca623a;
+  --amarelo-escuro: #a94e2d;
+
+  /* 🟡 Dourado */
+  --dourado: #e7ce52;
 
   --verde: #1b8a4a;
 
-  --cinza-bg: #f6f8fa;
+  --cinza-bg: #f4f6f8;
   --cinza-card: #ffffff;
   --cinza-borda: #dce1e6;
 
   --texto: #2b2b2b;
   --texto-sec: #6c757d;
 }
+
 
 /* ======================================================
    🌐 BASE
@@ -31,6 +35,15 @@ body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background-color: var(--cinza-bg);
   color: var(--texto);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* força altura total da tela */
+}
+
+
+main {
+  flex: 1; /* empurra o footer para baixo */
 }
 
 /* ======================================================
@@ -38,24 +51,22 @@ body {
 ====================================================== */
 .header-semed {
   position: relative;
-  padding: 14px 16px 18px;
+  padding: 18px 16px 20px;
   text-align: center;
-  color: #fff;
 
-  background: linear-gradient(
-    135deg,
-    var(--azul),
-    var(--azul-escuro)
-  );
+  background-color: #ffffff; /* fundo branco */
 
-  border-bottom: 3px solid var(--amarelo);
+  border-bottom: 4px solid var(--amarelo); /* linha laranja da marca */
+  
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* leve sombra elegante */
 }
+
 
 /* logo */
 .header-logo {
-  width: 110px;
+  width: 210px;
   height: auto;
-  margin-bottom: 6px;
+  margin-bottom: 1px;
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
 }
 
@@ -89,8 +100,8 @@ body {
 .btn-pink {
   background: linear-gradient(
     135deg,
-    var(--azul),
-    var(--azul-escuro)
+    var(--amarelo),
+    var(--amarelo)
   );
   color: #fff;
   border: none;
@@ -105,8 +116,8 @@ body {
 .btn-primary {
   background: linear-gradient(
     135deg,
-    var(--azul),
-    var(--azul-escuro)
+    var(--amarelo),
+    var(--amarelo)
   );
   border: none;
 }
@@ -201,27 +212,6 @@ select:focus {
   color: var(--texto-sec);
 }
 
-/* ======================================================
-   📌 CARD DO PLANO
-====================================================== */
-.card-plano {
-  position: absolute;
-  top: 58px;
-  left: 12px;
-  width: 300px;
-  display: none;
-  z-index: 1000;
-
-  background: linear-gradient(
-    135deg,
-    var(--azul),
-    var(--azul-escuro)
-  );
-  color: #fff;
-
-  border-radius: 14px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.25);
-}
 
 /* botão fechar plano */
 .card-plano .btn-secondary {
@@ -238,13 +228,14 @@ select:focus {
    📎 FOOTER
 ====================================================== */
 .footer-semed {
-  margin-top: 40px;
-  background-color: var(--azul-escuro);
+  margin-top: 0;
+  background-color: var(--amarelo);
   color: #fff;
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   font-size: 0.8rem;
 }
+
 
 /* ======================================================
    📱 RESPONSIVO

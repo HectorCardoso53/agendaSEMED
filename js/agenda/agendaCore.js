@@ -330,25 +330,12 @@ async function addTask() {
   }
 
   const [dia, mes, ano] = data.split("/");
-  const nomeMeses = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+  const nomeMeses = [
+    "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
+    "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
+  ];
+
   const mesAuto = nomeMeses[parseInt(mes) - 1] + ano;
-
-  const querMapa = confirm("Deseja adicionar uma localização no mapa?");
-
-  localStorage.setItem("novoCompromisso", JSON.stringify({
-    mesSelecionado: mesAuto,
-    diaSemana,
-    nome,
-    data,
-    horarioSaida,
-    localSaida,
-    destino
-  }));
-
-  if (querMapa) {
-    window.location.href = "mapa.html?modoCompromisso=true";
-    return;
-  }
 
   await addDoc(collection(db, "agenda", mesAuto, "compromissos"), {
     diaSemana,
@@ -357,17 +344,14 @@ async function addTask() {
     horarioSaida,
     localSaida,
     destino,
-    localizacaoId: null,
-    localizacaoNome: null,
     concluido: false
   });
-
-  localStorage.removeItem("novoCompromisso");
 
   await listTasks();
   await mostrarProximoCompromisso();
   showToast("📝 Compromisso criado com sucesso!");
 }
+
 
 // =============================
 // Finalizar adição (voltando do mapa)

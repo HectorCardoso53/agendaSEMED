@@ -1,12 +1,18 @@
 /* ================================
-   🎨 PALETA DE CORES – SEMED
+   🎨 PALETA DE CORES – NOVA SECRETARIA
 ================================ */
 :root {
-  --amarelo: #F4EB06;
-  --amarelo-escuro: #D0B411;
 
-  --azul: #0091D5;
-  --azul-escuro: #0461A3;
+  /* 🟠 Laranja da logo */
+  --amarelo: #ca623a;
+  --amarelo-escuro: #a94e2d;
+
+  /* 🟡 Amarelo dourado da logo */
+  --dourado: #e7ce52;
+
+  /* 🔵 Azul acinzentado da logo */
+  --azul: #657a96;
+  --azul-escuro: #4e627c;
 
   --vermelho: #EA1012;
 
@@ -15,6 +21,7 @@
   --cinza-borda: #dce1e6;
   --cinza-texto: #495057;
 }
+
 
 /* ================================
    🌐 BODY
@@ -46,7 +53,7 @@ body {
 ================================ */
 .card-login {
   background-color: #ffffff;
-  padding: 2.2rem 2rem;
+  padding: 1.2rem 1.2rem;
   border-radius: 14px;
   width: 100%;
   max-width: 380px;
@@ -61,17 +68,21 @@ body {
 ================================ */
 .card-login img {
   display: block;
-  margin: 0 auto 0.75rem;
-  max-width: 120px;
+  margin: 0 auto 0.1rem;  /* quase colado */
+  max-width: 170px;       /* levemente menor para equilibrar */
+  width: 100%;
+  height: auto;
 }
+
+
 
 /* ================================
    📝 TÍTULO
 ================================ */
 .card-login h2 {
   text-align: center;
-  margin-bottom: 1.8rem;
-  color: var(--azul-escuro);
+  margin-bottom: 1rem;
+  color: var(--amarelo);
   font-weight: 700;
   letter-spacing: 0.3px;
 }
@@ -125,8 +136,8 @@ label {
 .btn-login {
   background: linear-gradient(
     135deg,
-    var(--azul),
-    var(--azul-escuro)
+    var(--amarelo),
+    var(--amarelo)
   );
   color: #ffffff;
   width: 100%;
