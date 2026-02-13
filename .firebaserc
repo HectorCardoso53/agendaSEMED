@@ -1,5 +1,8 @@
-﻿{
+{
   "projects": {
-    "default": "agenda-78087"
-  }
+    "default": "conecta-orixi",
+    "agenda": "agenda-vereador-miguel"
+  },
+  "targets": {},
+  "etags": {}
 }

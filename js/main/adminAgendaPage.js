@@ -4,7 +4,9 @@ import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/
 import { ADMIN_UID } from "../../config/admin.js";
 import { inicializarAgenda } from "../agenda/agendaUI.js";
 
+
 onAuthStateChanged(auth, async (user) => {
+
   if (!user) {
     window.location.href = "index.html";
     return;
@@ -16,12 +18,11 @@ onAuthStateChanged(auth, async (user) => {
     return;
   }
 
-  // plano + bloqueio
-
-  // agenda
+  // Inicializa agenda
   inicializarAgenda();
 
-  // logout
+  
+  // Logout
   const btnLogout = document.getElementById("btnLogout");
   if (btnLogout) {
     btnLogout.addEventListener("click", async () => {
@@ -35,4 +36,5 @@ onAuthStateChanged(auth, async (user) => {
       }
     });
   }
+
 });
