@@ -254,3 +254,43 @@ select:focus {
     left: 5%;
   }
 }
+
+
+/* ================= MODAL SEMED ================= */
+
+.modal-header-semed {
+  background: linear-gradient(135deg, #ff7a00, #ff9a2f);
+  border-bottom: none;
+}
+
+.modal-logo {
+  width: 45px;
+  height: auto;
+}
+
+.btn-semed {
+  background: linear-gradient(135deg, #ff7a00, #ff9a2f);
+  border: none;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.btn-semed:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 122, 0, 0.4);
+}
+
+.modal-content {
+  animation: fadeInModal 0.3s ease;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

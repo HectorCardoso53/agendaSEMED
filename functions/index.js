@@ -59,7 +59,8 @@ exports.verificarCompromissos = onSchedule(
 
         const emails = [
           "hectorcardoso879@gmail.com",
-          "araujohector1997@gmail.com"
+          "vyvykafarias@gmail.com",
+          "jcgodinho7@gmail.com"
         ];
 
         if (diffMinutos <= 30 && diffMinutos > 0) {

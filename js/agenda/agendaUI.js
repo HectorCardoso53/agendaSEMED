@@ -1,16 +1,10 @@
 import {
   listTasks,
-  addTask,
   mostrarProximoCompromisso
 } from "../agenda/agendaCore.js";
 
 function inicializarAgenda() {
-  const btnAddTask = document.getElementById("btnAddTask");
   const selectMes = document.getElementById("selectMes");
-
-  if (btnAddTask) {
-    btnAddTask.addEventListener("click", addTask);
-  }
 
   if (selectMes) {
     selectMes.addEventListener("change", async () => {
