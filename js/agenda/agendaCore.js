@@ -110,7 +110,7 @@ async function listTasks() {
 
   try {
     const snap = await getDocs(
-      collection(db, "agenda", mesSelecionado, "compromissos")
+      collection(db, "agenda", mesSelecionado, "compromissos"),
     );
 
     if (snap.empty) {
@@ -135,7 +135,7 @@ async function listTasks() {
         parsedDate.month - 1,
         parsedDate.day,
         parsedTime.hours,
-        parsedTime.minutes
+        parsedTime.minutes,
       );
 
       compromissos.push({
@@ -163,10 +163,9 @@ async function listTasks() {
       checkbox.className = "form-check-input me-2";
 
       checkbox.addEventListener("change", async () => {
-        await updateDoc(
-          doc(db, "agenda", mesSelecionado, "compromissos", id),
-          { concluido: checkbox.checked }
-        );
+        await updateDoc(doc(db, "agenda", mesSelecionado, "compromissos", id), {
+          concluido: checkbox.checked,
+        });
         await listTasks();
         await mostrarProximoCompromisso();
       });
@@ -208,15 +207,12 @@ async function listTasks() {
 
         document.getElementById("nome").value = task.nome || "";
         document.getElementById("data").value = dataISO;
-        document.getElementById("horario").value =
-          task.horarioSaida || "";
-        document.getElementById("localSaida").value =
-          task.localSaida || "";
-        document.getElementById("destino").value =
-          task.destino || "";
+        document.getElementById("horario").value = task.horarioSaida || "";
+        document.getElementById("localSaida").value = task.localSaida || "";
+        document.getElementById("destino").value = task.destino || "";
 
         const modal = new bootstrap.Modal(
-          document.getElementById("modalAddTask")
+          document.getElementById("modalAddTask"),
         );
         modal.show();
       });
@@ -228,9 +224,7 @@ async function listTasks() {
       btnDelete.addEventListener("click", async () => {
         if (!confirm("Excluir compromisso?")) return;
 
-        await deleteDoc(
-          doc(db, "agenda", mesSelecionado, "compromissos", id)
-        );
+        await deleteDoc(doc(db, "agenda", mesSelecionado, "compromissos", id));
 
         await listTasks();
         await mostrarProximoCompromisso();
@@ -280,58 +274,81 @@ async function addTaskForm(event) {
     return;
   }
 
-  const diaSemana = getDiaSemana(data);
+  // ===============================
+  // TRATAMENTO CORRETO DA DATA
+  // ===============================
 
-  const dataObj = new Date(data);
-  const dia = String(dataObj.getDate()).padStart(2, "0");
-  const mes = String(dataObj.getMonth() + 1).padStart(2, "0");
-  const ano = dataObj.getFullYear();
+  const [ano, mes, dia] = data.split("-");
 
   const dataFormatada = `${dia}/${mes}/${ano}`;
+
+  const dataLocal = new Date(
+    Number(ano),
+    Number(mes) - 1,
+    Number(dia)
+  );
+
+  const diasSemana = [
+    "Domingo",
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira",
+    "Sábado",
+  ];
+
+  const diaSemana = diasSemana[dataLocal.getDay()];
 
   const nomeMeses = [
     "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
     "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
   ];
 
-  const mesAuto = nomeMeses[dataObj.getMonth()] + ano;
+  const mesAuto = nomeMeses[Number(mes) - 1] + ano;
 
   // =========================
   // SE ESTIVER EDITANDO
   // =========================
+
   if (editandoId) {
 
-    await updateDoc(
-      doc(db, "agenda", editandoMes, "compromissos", editandoId),
-      {
+    if (editandoMes !== mesAuto) {
+
+      await deleteDoc(
+        doc(db, "agenda", editandoMes, "compromissos", editandoId)
+      );
+
+      await addDoc(collection(db, "agenda", mesAuto, "compromissos"), {
         diaSemana,
         nome,
         data: dataFormatada,
         horarioSaida,
         localSaida,
-        destino
-      }
-    );
+        destino,
+        concluido: false,
+        notificado: false,
+      });
+
+    } else {
+
+      await updateDoc(
+        doc(db, "agenda", editandoMes, "compromissos", editandoId),
+        {
+          diaSemana,
+          nome,
+          data: dataFormatada,
+          horarioSaida,
+          localSaida,
+          destino,
+        }
+      );
+    }
 
     editandoId = null;
     editandoMes = null;
 
     showToast("✏️ Atualizado com sucesso!");
-
-  } else {
-
-    await addDoc(collection(db, "agenda", mesAuto, "compromissos"), {
-      diaSemana,
-      nome,
-      data: dataFormatada,
-      horarioSaida,
-      localSaida,
-      destino,
-      concluido: false,
-      notificado: false
-    });
-
-    showToast("📝 Criado com sucesso!");
   }
 
   document.getElementById("formAddTask").reset();
@@ -344,6 +361,7 @@ async function addTaskForm(event) {
   await listTasks();
   await mostrarProximoCompromisso();
 }
+
 export { mostrarProximoCompromisso, listTasks };
 
 document.getElementById("formAddTask").addEventListener("submit", addTaskForm);
