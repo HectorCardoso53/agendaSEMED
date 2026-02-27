@@ -274,28 +274,14 @@ async function addTaskForm(event) {
     return;
   }
 
-  // ===============================
-  // TRATAMENTO CORRETO DA DATA
-  // ===============================
-
   const [ano, mes, dia] = data.split("-");
-
   const dataFormatada = `${dia}/${mes}/${ano}`;
 
-  const dataLocal = new Date(
-    Number(ano),
-    Number(mes) - 1,
-    Number(dia)
-  );
+  const dataLocal = new Date(Number(ano), Number(mes) - 1, Number(dia));
 
   const diasSemana = [
-    "Domingo",
-    "Segunda-feira",
-    "Terça-feira",
-    "Quarta-feira",
-    "Quinta-feira",
-    "Sexta-feira",
-    "Sábado",
+    "Domingo","Segunda-feira","Terça-feira",
+    "Quarta-feira","Quinta-feira","Sexta-feira","Sábado",
   ];
 
   const diaSemana = diasSemana[dataLocal.getDay()];
@@ -308,9 +294,8 @@ async function addTaskForm(event) {
   const mesAuto = nomeMeses[Number(mes) - 1] + ano;
 
   // =========================
-  // SE ESTIVER EDITANDO
+  // EDITANDO
   // =========================
-
   if (editandoId) {
 
     if (editandoMes !== mesAuto) {
@@ -347,8 +332,26 @@ async function addTaskForm(event) {
 
     editandoId = null;
     editandoMes = null;
-
     showToast("✏️ Atualizado com sucesso!");
+  }
+
+  // =========================
+  // NOVO COMPROMISSO
+  // =========================
+  else {
+
+    await addDoc(collection(db, "agenda", mesAuto, "compromissos"), {
+      diaSemana,
+      nome,
+      data: dataFormatada,
+      horarioSaida,
+      localSaida,
+      destino,
+      concluido: false,
+      notificado: false,
+    });
+
+    showToast("✅ Compromisso adicionado com sucesso!");
   }
 
   document.getElementById("formAddTask").reset();
